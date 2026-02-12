@@ -2,10 +2,12 @@
 #
 # SPDX-License-Identifier: MIT
 
-'''Simple test for the SGP41 sensor'''
+"""Simple test for the SGP41 sensor"""
 
 import time
+
 import board
+
 from adafruit_sgp41 import Adafruit_SGP41
 
 i2c = board.I2C()

@@ -26,11 +26,13 @@ Implementation Notes
 """
 
 import time
+
 from adafruit_bus_device.i2c_device import I2CDevice
 from micropython import const
 
 try:
     from typing import List, Tuple
+
     from busio import I2C
 except ImportError:
     pass
@@ -73,7 +75,7 @@ class Adafruit_SGP41:
 
         # Verify device is present and working
         serial = self.serial_number
-        if serial == (0x0000, 0x0000, 0x0000) or serial == (0xFFFF, 0xFFFF, 0xFFFF):
+        if serial in {(0x0000, 0x0000, 0x0000), (0xFFFF, 0xFFFF, 0xFFFF)}:
             raise RuntimeError("Failed to find SGP41 sensor - check your wiring!")
 
     @property
@@ -161,7 +163,7 @@ class Adafruit_SGP41:
         time.sleep(_SGP41_CONDITIONING_DELAY)
 
         return self._read_words(1)[0]
-    
+
     @property
     def raw_voc(self) -> int:
         """
