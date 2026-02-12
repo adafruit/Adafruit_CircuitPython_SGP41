@@ -24,14 +24,12 @@ Table of Contents
 .. toctree::
     :caption: Tutorials
 
-.. todo:: Add any Learn guide links here. If there are none, then simply delete this todo and leave
-    the toctree above for use later.
+    Adafruit SGP41 Multi-Pixel Gas Sensor Breakout Learn Guide <https://learn.adafruit.com/adafruit-sgp41-multi-pixel-gas-sensor-breakout>
 
 .. toctree::
     :caption: Related Products
 
-.. todo:: Add any product links here. If there are none, then simply delete this todo and leave
-    the toctree above for use later.
+    Adafruit SGP41 Multi-Pixel Gas Sensor Breakout - VOC & NOx - STEMMA QT / Qwiic <https://www.adafruit.com/product/6455>
 
 .. toctree::
     :caption: Other Links

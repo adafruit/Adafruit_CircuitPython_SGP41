@@ -30,7 +30,6 @@ This driver depends on:
 
 * `Adafruit CircuitPython <https://github.com/adafruit/circuitpython>`_
 * `Bus Device <https://github.com/adafruit/Adafruit_CircuitPython_BusDevice>`_
-* `Register <https://github.com/adafruit/Adafruit_CircuitPython_Register>`_
 
 Please ensure all dependencies are available on the CircuitPython filesystem.
 This is easily achieved by downloading
@@ -94,7 +93,26 @@ Usage Example
 
 .. code-block:: python
 
-    import adafruit_sgp41
+    import time
+    import board
+    from adafruit_sgp41 import Adafruit_SGP41
+
+    i2c = board.I2C()
+    sensor = Adafruit_SGP41(i2c)
+
+    for i in range(10):
+        condition = sensor.conditioning()
+        print(f"Conditioning the sensor, {(i + 1)} of 10 times: {condition}")
+        time.sleep(1)
+
+    print("Sensor ready! Starting the loop..")
+    print()
+
+    while True:
+        print(f"Raw VOC: {sensor.raw_voc}")
+        print(f"Raw NOx: {sensor.raw_nox}")
+        print()
+        time.sleep(1)
 
 Documentation
 =============
