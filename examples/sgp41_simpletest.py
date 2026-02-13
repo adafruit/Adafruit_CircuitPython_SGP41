@@ -17,7 +17,7 @@ sensor = Adafruit_SGP41(i2c)
 # for more accurate readings from the sensor
 # can be used in conjunction with an external
 # temp and humidity sensor
-# sensor.temperature = 22.2 # Celcius
+# sensor.temperature = 22.2 # Celsius
 # sensor.relative_humidity = 30.9
 
 for i in range(10):

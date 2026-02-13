@@ -15,7 +15,7 @@ Implementation Notes
 
 **Hardware:**
 
-* `Adafruit SGP41 Gas Sensor Breakout <https://www.adafruit.com/product/6455>`_"
+* `Adafruit SGP41 Gas Sensor Breakout <https://www.adafruit.com/product/6455>`_
 
 **Software and Dependencies:**
 
