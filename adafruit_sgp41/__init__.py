@@ -72,6 +72,8 @@ class Adafruit_SGP41:
         self._i2c_bus = i2c_bus
         self._humidity = 50.0
         self._temperature = 25.0
+        self._voc_algorithm = None
+        self._nox_algorithm = None
 
         # Verify device is present and working
         serial = self.serial_number
@@ -183,6 +185,39 @@ class Adafruit_SGP41:
         """
         _, nox_raw = self.measure_raw()
         return nox_raw
+
+    def measure_index(
+        self,
+        humidity: float = None,
+        temperature: float = None,
+    ) -> Tuple[int, int]:
+        """
+        Measure humidity-compensated VOC and NOx index values.
+
+        The Sensirion gas index algorithm expects a 1 Hz sampling rate; call
+        this method once per second. During the first 45 seconds the algorithm
+        is warming up and returns ``0`` for both indices; afterwards each index
+        is in the range ``1..500`` with ``100`` representing typical indoor air
+        for VOC and ``1`` for NOx.
+
+        :param humidity: Relative humidity in percent (0-100). If None, uses stored value.
+        :param temperature: Temperature in degrees Celsius (-45 to 130). If None, uses stored value.
+        :return: Tuple of (voc_index, nox_index)
+        """
+        if self._voc_algorithm is None:
+            from adafruit_sgp41.gas_index_algorithm import (
+                ALGORITHM_TYPE_NOX,
+                ALGORITHM_TYPE_VOC,
+                GasIndexAlgorithm,
+            )
+
+            self._voc_algorithm = GasIndexAlgorithm(ALGORITHM_TYPE_VOC)
+            self._nox_algorithm = GasIndexAlgorithm(ALGORITHM_TYPE_NOX)
+
+        voc_raw, nox_raw = self.measure_raw(humidity=humidity, temperature=temperature)
+        voc_index = self._voc_algorithm.process(voc_raw)
+        nox_index = self._nox_algorithm.process(nox_raw)
+        return voc_index, nox_index
 
     def heater_off(self) -> None:
         """
