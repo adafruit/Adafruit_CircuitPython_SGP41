@@ -24,17 +24,17 @@ sensor = SGP41(i2c)
 # bme280 = adafruit_bme280.Adafruit_BME280_I2C(i2c)
 
 for i in range(10):
-        condition = sensor.conditioning()
-        print(f"Conditioning the sensor, {(i + 1)} of 10 times: {condition}")
-        time.sleep(1)
+    condition = sensor.conditioning()
+    print(f"Conditioning the sensor, {(i + 1)} of 10 times: {condition}")
+    time.sleep(1)
 
 print("Sensor ready! Starting the loop..")
 print()
 
 while True:
-        # temperature = bme280.temperature
-        # humidity = bme280.relative_humidity
-        # voc_index, nox_index = sensor.measure_index(humidity=humidity, temperature=temperature)
-        voc_index, nox_index = sensor.measure_index()
-        print(f"VOC Index: {voc_index}\tNOx Index: {nox_index}")
-        time.sleep(1)
+    # temperature = bme280.temperature
+    # humidity = bme280.relative_humidity
+    # voc_index, nox_index = sensor.measure_index(humidity=humidity, temperature=temperature)
+    voc_index, nox_index = sensor.measure_index()
+    print(f"VOC Index: {voc_index}\tNOx Index: {nox_index}")
+    time.sleep(1)
