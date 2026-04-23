@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: Copyright (c) 2026 Liz Clark for Adafruit Industries
 #
 # SPDX-License-Identifier: MIT
-"""
+""
 `adafruit_sgp41`
 ================================================================================
 
@@ -58,7 +58,7 @@ _SGP41_SELF_TEST_OK = const(0xD400)
 _SGP41_GENERAL_CALL_ADDR = const(0x00)
 
 
-class Adafruit_SGP41:
+class SGP41:
     """Driver for the SGP41 gas sensor."""
 
     def __init__(self, i2c_bus: I2C, address: int = _SGP41_DEFAULT_ADDR) -> None:
