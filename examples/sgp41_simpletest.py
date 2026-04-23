@@ -8,10 +8,10 @@ import time
 
 import board
 
-from adafruit_sgp41 import Adafruit_SGP41
+from adafruit_sgp41.sgp41 import SGP41
 
 i2c = board.I2C()
-sensor = Adafruit_SGP41(i2c)
+sensor = SGP41(i2c)
 
 # set ambient temperature and relative humidity
 # for more accurate readings from the sensor
@@ -21,15 +21,15 @@ sensor = Adafruit_SGP41(i2c)
 # sensor.relative_humidity = 30.9
 
 for i in range(10):
-    condition = sensor.conditioning()
-    print(f"Conditioning the sensor, {(i + 1)} of 10 times: {condition}")
-    time.sleep(1)
+        condition = sensor.conditioning()
+        print(f"Conditioning the sensor, {(i + 1)} of 10 times: {condition}")
+        time.sleep(1)
 
 print("Sensor ready! Starting the loop..")
 print()
 
 while True:
-    print(f"Raw VOC: {sensor.raw_voc}")
-    print(f"Raw NOx: {sensor.raw_nox}")
-    print()
-    time.sleep(1)
+        print(f"Raw VOC: {sensor.raw_voc}")
+        print(f"Raw NOx: {sensor.raw_nox}")
+        print()
+        time.sleep(1)
