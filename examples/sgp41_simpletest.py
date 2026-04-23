@@ -8,10 +8,10 @@ import time
 
 import board
 
-from adafruit_sgp41 import Adafruit_SGP41
+from adafruit_sgp41.sgp41 import SGP41
 
 i2c = board.I2C()
-sensor = Adafruit_SGP41(i2c)
+sensor = SGP41(i2c)
 
 # set ambient temperature and relative humidity
 # for more accurate readings from the sensor

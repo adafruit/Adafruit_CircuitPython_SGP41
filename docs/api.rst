@@ -9,3 +9,6 @@ API Reference
 
 .. automodule:: adafruit_sgp41
     :members:
+
+.. automodule:: adafruit_sgp41.gas_index_algorithm
+    :members:
